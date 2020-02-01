@@ -1,20 +1,21 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Player.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/idleChar2.png" type="Texture" id=2]
 [ext_resource path="res://Sprites/idleChar1.png" type="Texture" id=3]
 [ext_resource path="res://Sprites/idleChar3.png" type="Texture" id=4]
-[ext_resource path="res://Sprites/runChar10.png" type="Texture" id=5]
-[ext_resource path="res://Sprites/runChar12.png" type="Texture" id=6]
-[ext_resource path="res://Sprites/runChar11.png" type="Texture" id=7]
-[ext_resource path="res://Sprites/runChar5.png" type="Texture" id=8]
-[ext_resource path="res://Sprites/runChar7.png" type="Texture" id=9]
-[ext_resource path="res://Sprites/runChar9.png" type="Texture" id=10]
-[ext_resource path="res://Sprites/runChar6.png" type="Texture" id=11]
-[ext_resource path="res://Sprites/runChar4.png" type="Texture" id=12]
-[ext_resource path="res://Sprites/runChar13.png" type="Texture" id=13]
-[ext_resource path="res://Sprites/runChar8.png" type="Texture" id=14]
-[ext_resource path="res://Sprites/runChar14.png" type="Texture" id=15]
+[ext_resource path="res://Sprites/Char_runcycle8.png" type="Texture" id=5]
+[ext_resource path="res://Sprites/Char_runcycle6.png" type="Texture" id=6]
+[ext_resource path="res://Sprites/Char_runcycle2.png" type="Texture" id=7]
+[ext_resource path="res://Sprites/Char_runcycle1.png" type="Texture" id=8]
+[ext_resource path="res://Sprites/Char_runcycle9.png" type="Texture" id=9]
+[ext_resource path="res://Sprites/Char_runcycle3.png" type="Texture" id=10]
+[ext_resource path="res://Sprites/Char_runcycle7.png" type="Texture" id=11]
+[ext_resource path="res://Sprites/Char_runcycle5.png" type="Texture" id=12]
+[ext_resource path="res://Sprites/Char_runcycle4.png" type="Texture" id=13]
+[ext_resource path="res://Sprites/Char_runstart1.png" type="Texture" id=14]
+[ext_resource path="res://Sprites/idleChar4.png" type="Texture" id=15]
+[ext_resource path="res://Sprites/Char_runstart2.png" type="Texture" id=16]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 8.03363, 8.13496 )
@@ -26,20 +27,29 @@ animations = [ {
 "name": "default",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 12 ), ExtResource( 8 ), ExtResource( 11 ), ExtResource( 9 ), ExtResource( 14 ), ExtResource( 10 ), ExtResource( 5 ), ExtResource( 7 ), ExtResource( 6 ), ExtResource( 13 ), ExtResource( 15 ) ],
+"frames": [ ExtResource( 8 ), ExtResource( 7 ), ExtResource( 10 ), ExtResource( 13 ), ExtResource( 12 ), ExtResource( 6 ), ExtResource( 11 ), ExtResource( 5 ), ExtResource( 9 ) ],
 "loop": true,
 "name": "Run",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 3 ), ExtResource( 2 ), ExtResource( 4 ) ],
+"frames": [ ExtResource( 14 ), ExtResource( 16 ) ],
+"loop": false,
+"name": "Run Start",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ), ExtResource( 2 ), ExtResource( 4 ), ExtResource( 15 ) ],
 "loop": true,
 "name": "Idle",
 "speed": 5.0
 } ]
 
+[sub_resource type="AudioStreamSample" id=3]
+
 [node name="Player" type="KinematicBody2D"]
-scale = Vector2( 2, 2 )
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
 scale = Vector2( 1, 2 )
@@ -48,9 +58,11 @@ shape = SubResource( 1 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 2.38329, 0 )
 frames = SubResource( 2 )
-animation = "Idle"
-frame = 2
+animation = "Run"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
-zoom = Vector2( 0.75, 0.75 )
+zoom = Vector2( 0.5, 0.5 )
+
+[node name="Player Run" type="AudioStreamPlayer" parent="."]
+stream = SubResource( 3 )

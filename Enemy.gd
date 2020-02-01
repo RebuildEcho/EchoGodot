@@ -2,6 +2,7 @@ extends KinematicBody2D
 
 var origin = Vector2()
 var velocity = Vector2()
+export (int) var gravity = 30
 export (int) var deviation = 400
 export (int) var speed = 150
 var dir
@@ -14,7 +15,7 @@ func _ready():
 func _physics_process(delta):
 	velocity.x = speed*dir
 	velocity = move_and_slide(velocity, Vector2(0,-1))
-	#velocity.y += gravity * delta
+	velocity.y += gravity
 	
 	if is_on_wall():
 		dir = dir*-1
