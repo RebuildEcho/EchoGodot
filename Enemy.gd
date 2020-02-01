@@ -11,7 +11,8 @@ var dir
 func _ready():
 	dir = 1
 	origin = global_position
-
+	add_to_group("enemies", true)
+	
 func _physics_process(delta):
 	velocity.x = speed*dir
 	velocity = move_and_slide(velocity, Vector2(0,-1))
