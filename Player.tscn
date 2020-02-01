@@ -45,11 +45,6 @@ animations = [ {
 "name": "Run",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 14 ), ExtResource( 15 ) ],
-"loop": true,
-"name": "Fall Start",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 19 ), ExtResource( 22 ), ExtResource( 17 ), ExtResource( 13 ) ],
 "loop": true,
 "name": "Idle",
@@ -58,6 +53,11 @@ animations = [ {
 "frames": [ ExtResource( 9 ), ExtResource( 7 ), ExtResource( 2 ), ExtResource( 16 ) ],
 "loop": true,
 "name": "Fall",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 14 ), ExtResource( 15 ) ],
+"loop": true,
+"name": "Fall Start",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 18 ), ExtResource( 8 ) ],
