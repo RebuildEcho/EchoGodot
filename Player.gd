@@ -115,7 +115,7 @@ func _process(delta):
 	var jump = Input.is_action_just_pressed('ui_jump')
 	$AnimatedSprite.speed_scale = 1.5
 	if airborne:
-		moveSpeed = speed / 2
+		moveSpeed = speed 
 	else:
 		moveSpeed = speed
 	
