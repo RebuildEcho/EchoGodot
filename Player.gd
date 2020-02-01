@@ -22,6 +22,7 @@ var jumping = false
 var interacting = false
 var inLocked
 var using
+var dead
 
 func _ready():
 	moveSpeed = speed
@@ -31,6 +32,7 @@ func _ready():
 	wallJumpEnable = false
 	inLocked = false
 	using = false
+	dead = false
 
 func get_input():
 	
@@ -73,6 +75,7 @@ func get_input():
 	else:
 		interacting = false
 		
+
 		
 #	if bounce && wallJumpEnable:
 #		#velocity.x += bounceSpeed * bounceDir * 12
@@ -119,51 +122,55 @@ func _process(delta):
 	else:
 		moveSpeed = speed
 	
+	if Input.is_key_pressed(KEY_K):
+		dead = true
+		
 	
 	print(interacting)
-	
-	if !is_on_floor():
-		airborne = true
-		if !fallFlag:
-			$AnimatedSprite.play("Fall Start")
-			fallFlag = true
-		elif $AnimatedSprite.frame > 0:
-			$AnimatedSprite.play("Fall")
-			
-		if right:
-			$AnimatedSprite.flip_h = false
-		if left:
-			$AnimatedSprite.flip_h = true
-		
-	else:
-		if !inLocked:
-			airborne = false
-			if $AnimatedSprite.animation == "Fall":
-				$AnimatedSprite.animation = "Run Start"
-			fallFlag = false
+	if !dead:
+		if !is_on_floor():
+			airborne = true
+			if !fallFlag:
+				$AnimatedSprite.play("Fall Start")
+				fallFlag = true
+			elif $AnimatedSprite.frame > 0:
+				$AnimatedSprite.play("Fall")
+				
 			if right:
 				$AnimatedSprite.flip_h = false
-				if !running:
-					$AnimatedSprite.speed_scale = 0.2
-					$AnimatedSprite.play("Run Start")
-					running = true
-				elif $AnimatedSprite.frame == 1:
-					$AnimatedSprite.play("Run")
-				
 			if left:
 				$AnimatedSprite.flip_h = true
-				if !running:
-					$AnimatedSprite.speed_scale = 0.2
-					$AnimatedSprite.play("Run Start")
-					running = true
-				elif $AnimatedSprite.frame == 1:
-					$AnimatedSprite.play("Run")
-		if !using:
-			if velocity == Vector2():
-				$AnimatedSprite.speed_scale = 0.25
-				$AnimatedSprite.play("Idle")
-				running = false
-		#TODO: Add interact animation
+			
+		else:
+			if !inLocked:
+				airborne = false
+				if $AnimatedSprite.animation == "Fall":
+					$AnimatedSprite.animation = "Run Start"
+				fallFlag = false
+				if right:
+					$AnimatedSprite.flip_h = false
+					if !running:
+						$AnimatedSprite.speed_scale = 0.2
+						$AnimatedSprite.play("Run Start")
+						running = true
+					elif $AnimatedSprite.frame == 1:
+						$AnimatedSprite.play("Run")
+					
+				if left:
+					$AnimatedSprite.flip_h = true
+					if !running:
+						$AnimatedSprite.speed_scale = 0.2
+						$AnimatedSprite.play("Run Start")
+						running = true
+					elif $AnimatedSprite.frame == 1:
+						$AnimatedSprite.play("Run")
+			if !using:
+				if velocity == Vector2():
+					$AnimatedSprite.speed_scale = 0.25
+					$AnimatedSprite.play("Idle")
+					running = false
+	else:
+		$AnimatedSprite.play("Death")
 			
 		
 
@@ -176,3 +183,8 @@ func _on_wallJump_Collider_R_body_entered(body):
 	wallJumpEnable = true
 	bounceDir = -1
 	print("Right")
+
+
+func _on_Death_Hitbox_body_entered(body):
+	if body.is_in_group("enemies"):
+		dead = true

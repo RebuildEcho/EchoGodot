@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=39 format=2]
 
 [ext_resource path="res://Player.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/char/fall_Char4.png" type="Texture" id=2]
@@ -24,6 +24,14 @@
 [ext_resource path="res://Sprites/char/idleChar2.png" type="Texture" id=22]
 [ext_resource path="res://Sprites/char/stopChar2.png" type="Texture" id=23]
 [ext_resource path="res://Sprites/char/stopChar1.png" type="Texture" id=24]
+[ext_resource path="res://Sprites/char/deathChar1.png" type="Texture" id=25]
+[ext_resource path="res://Sprites/char/deathChar2.png" type="Texture" id=26]
+[ext_resource path="res://Sprites/char/deathChar6.png" type="Texture" id=27]
+[ext_resource path="res://Sprites/char/deathChar8.png" type="Texture" id=28]
+[ext_resource path="res://Sprites/char/deathChar5.png" type="Texture" id=29]
+[ext_resource path="res://Sprites/char/deathChar4.png" type="Texture" id=30]
+[ext_resource path="res://Sprites/char/deathChar7.png" type="Texture" id=31]
+[ext_resource path="res://Sprites/char/deathChar3.png" type="Texture" id=32]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 8.03363, 8.13496 )
@@ -35,24 +43,9 @@ animations = [ {
 "name": "default",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 23 ), ExtResource( 24 ) ],
-"loop": false,
-"name": "Stop",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 14 ), ExtResource( 15 ) ],
+"frames": [ ExtResource( 3 ), ExtResource( 11 ), ExtResource( 21 ), ExtResource( 20 ), ExtResource( 10 ), ExtResource( 6 ), ExtResource( 5 ), ExtResource( 4 ), ExtResource( 12 ) ],
 "loop": true,
-"name": "Fall Start",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 19 ), ExtResource( 22 ), ExtResource( 17 ), ExtResource( 13 ) ],
-"loop": true,
-"name": "Idle",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 9 ), ExtResource( 7 ), ExtResource( 2 ), ExtResource( 16 ) ],
-"loop": true,
-"name": "Fall",
+"name": "Run",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 18 ), ExtResource( 8 ) ],
@@ -60,9 +53,29 @@ animations = [ {
 "name": "Run Start",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 3 ), ExtResource( 11 ), ExtResource( 21 ), ExtResource( 20 ), ExtResource( 10 ), ExtResource( 6 ), ExtResource( 5 ), ExtResource( 4 ), ExtResource( 12 ) ],
+"frames": [ ExtResource( 19 ), ExtResource( 22 ), ExtResource( 17 ), ExtResource( 13 ) ],
 "loop": true,
-"name": "Run",
+"name": "Idle",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 14 ), ExtResource( 15 ) ],
+"loop": true,
+"name": "Fall Start",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 9 ), ExtResource( 7 ), ExtResource( 2 ), ExtResource( 16 ) ],
+"loop": true,
+"name": "Fall",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 25 ), ExtResource( 26 ), ExtResource( 32 ), ExtResource( 30 ), ExtResource( 29 ), ExtResource( 27 ), ExtResource( 31 ), ExtResource( 28 ) ],
+"loop": false,
+"name": "Death",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 23 ), ExtResource( 24 ) ],
+"loop": false,
+"name": "Stop",
 "speed": 5.0
 } ]
 
@@ -74,6 +87,9 @@ extents = Vector2( 1.2472, 5.06374 )
 [sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 1.18308, 5.7838 )
 
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 8.38, 16.4141 )
+
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 1 )
 
@@ -84,8 +100,7 @@ shape = SubResource( 1 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 2.38329, 0 )
 frames = SubResource( 2 )
-animation = "Stop"
-frame = 1
+animation = "Death"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
@@ -107,5 +122,11 @@ shape = SubResource( 4 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="wallJump Collider L"]
 position = Vector2( -13.3235, 0.450819 )
 shape = SubResource( 5 )
+
+[node name="Death Hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Death Hitbox"]
+shape = SubResource( 6 )
 [connection signal="body_entered" from="wallJump Collider R" to="." method="_on_wallJump_Collider_R_body_entered"]
 [connection signal="body_entered" from="wallJump Collider L" to="." method="_on_wallJump_Collider_L_body_entered"]
+[connection signal="body_entered" from="Death Hitbox" to="." method="_on_Death_Hitbox_body_entered"]
