@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://Tiles/iron_tile_bigboy.png" type="Texture" id=1]
 [ext_resource path="res://Tiles/wall_tile.png" type="Texture" id=2]
@@ -12,7 +12,6 @@
 [ext_resource path="res://Sprites/tiles/stonebrickMoss1.png" type="Texture" id=10]
 [ext_resource path="res://Sprites/tiles/stonebrickDark2.png" type="Texture" id=11]
 [ext_resource path="res://Sprites/tiles/stonebrickDark3.png" type="Texture" id=12]
-[ext_resource path="res://Sprites/tiles/mapbackground.png" type="Texture" id=13]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
@@ -281,7 +280,3 @@ cell_size = Vector2( 32, 32 )
 cell_y_sort = true
 format = 1
 tile_data = PoolIntArray( -196597, 13, 0, -196596, 8, 0, -196595, 8, 0, -196594, 8, 0, -196593, 8, 0, -196592, 8, 0, -196591, 8, 0, -196590, 8, 0, -196589, 8, 0, -196588, 8, 0, -131064, 13, 0, -131063, 8, 0, -131062, 8, 0, -131061, 8, 0, -131060, 8, 0, -131059, 8, 0, -131058, 8, 0, -131057, 8, 0, -131056, 8, 0, -131055, 8, 0, -131054, 8, 0, -131053, 8, 0, -131052, 8, 0, -65529, 13, 0, -65528, 8, 0, -65527, 8, 0, -65526, 8, 0, -65525, 8, 0, -65524, 8, 0, -65523, 8, 0, -65522, 8, 0, -65521, 8, 0, -65520, 8, 0, -65519, 8, 0, -65518, 8, 0, -65517, 8, 0, -65516, 8, 0, 0, 8, 0, 1, 8, 0, 2, 8, 0, 3, 8, 0, 4, 8, 0, 5, 8, 0, 6, 8, 0, 7, 8, 0, 8, 8, 0, 9, 8, 0, 10, 8, 0, 11, 8, 0, 12, 8, 0, 13, 8, 0, 14, 8, 0, 15, 8, 0, 16, 8, 0, 17, 8, 0, 18, 8, 0, 19, 8, 0, 20, 8, 0, 65542, -1073741823, 0, 65543, -1073741823, 0, 65544, -1073741823, 0, 65545, -1073741823, 0, 65546, -1073741823, 0 )
-
-[node name="mapbackground" type="Sprite" parent="."]
-position = Vector2( 1185, -895.078 )
-texture = ExtResource( 13 )
