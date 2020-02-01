@@ -6,6 +6,8 @@
 [node name="Game" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 50.9646, -35.2902 )
+position = Vector2( 54.0159, -18.9242 )
+speed = 200
+jumpSpeed = -300
 
 [node name="Terrain 1" parent="." instance=ExtResource( 2 )]
