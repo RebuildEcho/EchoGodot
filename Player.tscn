@@ -1,0 +1,56 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://Player.gd" type="Script" id=1]
+[ext_resource path="res://Sprites/idleChar2.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/idleChar1.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/idleChar3.png" type="Texture" id=4]
+[ext_resource path="res://Sprites/runChar10.png" type="Texture" id=5]
+[ext_resource path="res://Sprites/runChar12.png" type="Texture" id=6]
+[ext_resource path="res://Sprites/runChar11.png" type="Texture" id=7]
+[ext_resource path="res://Sprites/runChar5.png" type="Texture" id=8]
+[ext_resource path="res://Sprites/runChar7.png" type="Texture" id=9]
+[ext_resource path="res://Sprites/runChar9.png" type="Texture" id=10]
+[ext_resource path="res://Sprites/runChar6.png" type="Texture" id=11]
+[ext_resource path="res://Sprites/runChar4.png" type="Texture" id=12]
+[ext_resource path="res://Sprites/runChar13.png" type="Texture" id=13]
+[ext_resource path="res://Sprites/runChar8.png" type="Texture" id=14]
+[ext_resource path="res://Sprites/runChar14.png" type="Texture" id=15]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 8.03363, 8.13496 )
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [  ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 12 ), ExtResource( 8 ), ExtResource( 11 ), ExtResource( 9 ), ExtResource( 14 ), ExtResource( 10 ), ExtResource( 5 ), ExtResource( 7 ), ExtResource( 6 ), ExtResource( 13 ), ExtResource( 15 ) ],
+"loop": true,
+"name": "Run",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ), ExtResource( 2 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "Idle",
+"speed": 5.0
+} ]
+
+[node name="Player" type="KinematicBody2D"]
+scale = Vector2( 2, 2 )
+script = ExtResource( 1 )
+
+[node name="Hitbox" type="CollisionShape2D" parent="."]
+scale = Vector2( 1, 2 )
+shape = SubResource( 1 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 2.38329, 0 )
+frames = SubResource( 2 )
+animation = "Idle"
+frame = 2
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+zoom = Vector2( 0.75, 0.75 )
