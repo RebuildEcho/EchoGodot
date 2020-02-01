@@ -10,12 +10,18 @@ var running
 var wallJumpEnable
 var fallFlag
 
+var right_rel = false
+var left_rel = false
+var jump_rel = false
 
 var bounceDir
 var velocity = Vector2()
 var vSpeed = 0
 var airborne = false
 var jumping = false
+var interacting = false
+var inLocked
+var using
 
 func _ready():
 	moveSpeed = speed
@@ -23,27 +29,55 @@ func _ready():
 	running = false
 	fallFlag = false
 	wallJumpEnable = false
+	inLocked = false
+	using = false
 
 func get_input():
 	
 	var right = Input.is_action_pressed('ui_right')
+	if Input.is_action_just_released('ui_right'):
+		right_rel = true
 	var left = Input.is_action_pressed('ui_left')
+	if Input.is_action_just_released('ui_left'):
+		left_rel = true
 	var jump = Input.is_action_just_pressed('ui_jump')
+	if Input.is_action_just_released('ui_jump'):
+		jump_rel = true
 	var bounce = Input.is_action_just_pressed('ui_bounce')
+	var interact = Input.is_action_pressed('ui_fire')
 
 
 	if jump and is_on_floor():
-		velocity.y += jumpSpeed
-		jumping = true
+		if !inLocked:
+			velocity.y += jumpSpeed
+			jumping = true
+		elif jump_rel:
+			inLocked = false
+			jump_rel = false
 	if right:
-		velocity.x += moveSpeed
+		if !inLocked:
+			velocity.x += moveSpeed
+		elif right_rel:
+			inLocked = false
+			right_rel = false
 	if left:
-		velocity.x -= moveSpeed
+		if !inLocked:
+			velocity.x -= moveSpeed
+		elif left_rel:
+			inLocked = false
+			left_rel = false
+	
+	if interact && is_on_floor():
+		interacting = true
+		inLocked = true
+	else:
+		interacting = false
 		
-	if bounce && wallJumpEnable:
-		#velocity.x += bounceSpeed * bounceDir * 12
-		velocity.y += bounceSpeed
-		wallJumpEnable = false
+		
+#	if bounce && wallJumpEnable:
+#		#velocity.x += bounceSpeed * bounceDir * 12
+#		velocity.y += bounceSpeed
+#		wallJumpEnable = false
 	
 		
 
@@ -86,6 +120,8 @@ func _process(delta):
 		moveSpeed = speed
 	
 	
+	print(interacting)
+	
 	if !is_on_floor():
 		airborne = true
 		if !fallFlag:
@@ -100,32 +136,35 @@ func _process(delta):
 			$AnimatedSprite.flip_h = true
 		
 	else:
-		airborne = false
-		if $AnimatedSprite.animation == "Fall":
-			$AnimatedSprite.animation = "Run Start"
-		fallFlag = false
-		if right:
-			$AnimatedSprite.flip_h = false
-			if !running:
-				$AnimatedSprite.speed_scale = 0.2
-				$AnimatedSprite.play("Run Start")
-				running = true
-			elif $AnimatedSprite.frame == 1:
-				$AnimatedSprite.play("Run")
+		if !inLocked:
+			airborne = false
+			if $AnimatedSprite.animation == "Fall":
+				$AnimatedSprite.animation = "Run Start"
+			fallFlag = false
+			if right:
+				$AnimatedSprite.flip_h = false
+				if !running:
+					$AnimatedSprite.speed_scale = 0.2
+					$AnimatedSprite.play("Run Start")
+					running = true
+				elif $AnimatedSprite.frame == 1:
+					$AnimatedSprite.play("Run")
+				
+			if left:
+				$AnimatedSprite.flip_h = true
+				if !running:
+					$AnimatedSprite.speed_scale = 0.2
+					$AnimatedSprite.play("Run Start")
+					running = true
+				elif $AnimatedSprite.frame == 1:
+					$AnimatedSprite.play("Run")
+		if !using:
+			if velocity == Vector2():
+				$AnimatedSprite.speed_scale = 0.25
+				$AnimatedSprite.play("Idle")
+				running = false
+		#TODO: Add interact animation
 			
-		if left:
-			$AnimatedSprite.flip_h = true
-			if !running:
-				$AnimatedSprite.speed_scale = 0.2
-				$AnimatedSprite.play("Run Start")
-				running = true
-			elif $AnimatedSprite.frame == 1:
-				$AnimatedSprite.play("Run")
-		
-		if (!left && !right) || (left && right):
-			$AnimatedSprite.speed_scale = 0.25
-			$AnimatedSprite.play("Idle")
-			running = false
 		
 
 func _on_wallJump_Collider_L_body_entered(body):
