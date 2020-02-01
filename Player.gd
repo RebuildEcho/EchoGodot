@@ -24,8 +24,6 @@ var inLocked
 var using
 var dead
 
-var soundPlayer
-
 func _ready():
 	moveSpeed = speed
 	bounceDir = 0
@@ -35,10 +33,6 @@ func _ready():
 	inLocked = false
 	using = false
 	dead = false
-	
-	soundPlayer = AudioStreamPlayer.new()
-	self.add_child(soundPlayer)
-	soundPlayer.stream = load("res://Sounds//walk.wav")
 
 func get_input():
 	
@@ -114,6 +108,9 @@ func _physics_process(delta):
 	
 	velocity = move_and_slide(velocity, Vector2(0, -1))
 	
+	print(velocity)
+	
+	
 func _process(delta):
 	
 	var right = Input.is_action_pressed('ui_right')
@@ -128,11 +125,11 @@ func _process(delta):
 	if Input.is_key_pressed(KEY_K):
 		dead = true
 		
+	
+	print(interacting)
 	if !dead:
 		if !is_on_floor():
 			airborne = true
-			soundPlayer.stop()
-			
 			if !fallFlag:
 				$AnimatedSprite.play("Fall Start")
 				fallFlag = true
@@ -146,14 +143,11 @@ func _process(delta):
 			
 		else:
 			if !inLocked:
-				#soundPlayer.pitch_scale(0.5)
 				airborne = false
 				if $AnimatedSprite.animation == "Fall":
 					$AnimatedSprite.animation = "Run Start"
 				fallFlag = false
 				if right:
-					if !soundPlayer.playing:
-						soundPlayer.play(0)
 					$AnimatedSprite.flip_h = false
 					if !running:
 						$AnimatedSprite.speed_scale = 0.2
@@ -163,8 +157,6 @@ func _process(delta):
 						$AnimatedSprite.play("Run")
 					
 				if left:
-					if !soundPlayer.playing:
-						soundPlayer.play(0)
 					$AnimatedSprite.flip_h = true
 					if !running:
 						$AnimatedSprite.speed_scale = 0.2
@@ -174,23 +166,23 @@ func _process(delta):
 						$AnimatedSprite.play("Run")
 			if !using:
 				if velocity == Vector2():
-					soundPlayer.stop()
 					$AnimatedSprite.speed_scale = 0.25
 					$AnimatedSprite.play("Idle")
 					running = false
 	else:
 		$AnimatedSprite.play("Death")
-		inLocked = true
 			
 		
 
 func _on_wallJump_Collider_L_body_entered(body):
 	wallJumpEnable = true
 	bounceDir = 1
+	print("Left")
 
 func _on_wallJump_Collider_R_body_entered(body):
 	wallJumpEnable = true
 	bounceDir = -1
+	print("Right")
 
 
 func _on_Death_Hitbox_body_entered(body):
