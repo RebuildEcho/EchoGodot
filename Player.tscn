@@ -94,20 +94,15 @@ animations = [ {
 "name": "default",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 19 ), ExtResource( 22 ), ExtResource( 17 ), ExtResource( 13 ) ],
+"frames": [ ExtResource( 18 ), ExtResource( 8 ) ],
 "loop": true,
-"name": "Idle",
+"name": "Run Start",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 3 ), ExtResource( 11 ), ExtResource( 21 ), ExtResource( 20 ), ExtResource( 10 ), ExtResource( 6 ), ExtResource( 5 ), ExtResource( 4 ), ExtResource( 12 ) ],
 "loop": true,
 "name": "Run",
 "speed": 8.0
-}, {
-"frames": [ ExtResource( 18 ), ExtResource( 8 ) ],
-"loop": true,
-"name": "Run Start",
-"speed": 5.0
 }, {
 "frames": [ ExtResource( 7 ), ExtResource( 2 ), ExtResource( 16 ), ExtResource( 66 ) ],
 "loop": true,
@@ -119,14 +114,19 @@ animations = [ {
 "name": "Attack",
 "speed": 5.0
 }, {
+"frames": [ ExtResource( 14 ), ExtResource( 15 ) ],
+"loop": true,
+"name": "Fall Start",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 25 ), ExtResource( 26 ), ExtResource( 32 ), ExtResource( 30 ), ExtResource( 29 ), ExtResource( 27 ), ExtResource( 31 ), ExtResource( 28 ) ],
 "loop": false,
 "name": "Death",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 14 ), ExtResource( 15 ) ],
+"frames": [ ExtResource( 19 ), ExtResource( 22 ), ExtResource( 17 ), ExtResource( 13 ) ],
 "loop": true,
-"name": "Fall Start",
+"name": "Idle",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 23 ), ExtResource( 24 ) ],
@@ -162,7 +162,7 @@ position = Vector2( 226.811, 127.033 )
 scale = Vector2( 1.93778, 1.93778 )
 frames = SubResource( 1 )
 animation = "storm"
-frame = 11
+frame = 19
 playing = true
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
@@ -172,7 +172,6 @@ motion_mirroring = Vector2( 640, 640 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="ParallaxBackground/ParallaxLayer"]
 frames = SubResource( 2 )
 animation = "rain"
-frame = 2
 playing = true
 centered = false
 
@@ -288,6 +287,9 @@ shape = SubResource( 7 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Death Hitbox"]
 shape = SubResource( 8 )
+
+[node name="Death Timer" type="Timer" parent="."]
 [connection signal="body_entered" from="wallJump Collider R" to="." method="_on_wallJump_Collider_R_body_entered"]
 [connection signal="body_entered" from="wallJump Collider L" to="." method="_on_wallJump_Collider_L_body_entered"]
 [connection signal="body_entered" from="Death Hitbox" to="." method="_on_Death_Hitbox_body_entered"]
+[connection signal="timeout" from="Death Timer" to="." method="_on_Timer_timeout"]

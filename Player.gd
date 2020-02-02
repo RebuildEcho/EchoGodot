@@ -97,8 +97,6 @@ func _physics_process(delta):
 	velocity = move_and_slide(velocity, Vector2(0, -1))
 	
 func _process(delta):
-	var dCounter
-	
 	var right = Input.is_action_pressed('ui_right')
 	var left = Input.is_action_pressed('ui_left')
 	var jump = Input.is_action_just_pressed('ui_jump')
@@ -179,13 +177,13 @@ func _process(delta):
 					$AnimatedSprite.play("Idle")
 					running = false
 	else:
-		dCounter = 0
 		$AnimatedSprite.play("Death")
 		if $AnimatedSprite.animation == "Death" && $AnimatedSprite.frame == 7:
 			dCounter = dCounter + delta
-			if dCounter == 1:
-				get_tree().reload_current_scene()
-				inLocked = true
+			inLocked = true
+			$"Death Timer".start(1)
+				
+				
 			
 		
 
@@ -201,3 +199,7 @@ func _on_wallJump_Collider_R_body_entered(body):
 func _on_Death_Hitbox_body_entered(body):
 	if body.is_in_group("enemies"):
 		dead = true
+
+
+func _on_Timer_timeout():
+	get_tree().reload_current_scene()
