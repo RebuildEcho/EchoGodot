@@ -1,4 +1,4 @@
-[gd_scene load_steps=67 format=2]
+[gd_scene load_steps=74 format=2]
 
 [ext_resource path="res://Player.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/char/fall_Char4.png" type="Texture" id=2]
@@ -58,6 +58,13 @@
 [ext_resource path="res://Sprites/tiles/storm/storm16.png" type="Texture" id=56]
 [ext_resource path="res://Sprites/tiles/storm/storm21.png" type="Texture" id=57]
 [ext_resource path="res://Sprites/tiles/storm/storm14.png" type="Texture" id=58]
+[ext_resource path="res://Sprites/char/hitChar5.png" type="Texture" id=59]
+[ext_resource path="res://Sprites/char/hitChar6.png" type="Texture" id=60]
+[ext_resource path="res://Sprites/char/hitChar7.png" type="Texture" id=61]
+[ext_resource path="res://Sprites/char/hitChar3.png" type="Texture" id=62]
+[ext_resource path="res://Sprites/char/hitChar1.png" type="Texture" id=63]
+[ext_resource path="res://Sprites/char/hitChar2.png" type="Texture" id=64]
+[ext_resource path="res://Sprites/char/hitChar4.png" type="Texture" id=65]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -95,21 +102,6 @@ animations = [ {
 "name": "Idle",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 9 ), ExtResource( 7 ), ExtResource( 2 ), ExtResource( 16 ) ],
-"loop": true,
-"name": "Fall",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 18 ), ExtResource( 8 ) ],
-"loop": true,
-"name": "Run Start",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 3 ), ExtResource( 11 ), ExtResource( 21 ), ExtResource( 20 ), ExtResource( 10 ), ExtResource( 6 ), ExtResource( 5 ), ExtResource( 4 ), ExtResource( 12 ) ],
-"loop": true,
-"name": "Run",
-"speed": 8.0
-}, {
 "frames": [ ExtResource( 25 ), ExtResource( 26 ), ExtResource( 32 ), ExtResource( 30 ), ExtResource( 29 ), ExtResource( 27 ), ExtResource( 31 ), ExtResource( 28 ) ],
 "loop": false,
 "name": "Death",
@@ -118,6 +110,26 @@ animations = [ {
 "frames": [ ExtResource( 14 ), ExtResource( 15 ) ],
 "loop": true,
 "name": "Fall Start",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 9 ), ExtResource( 7 ), ExtResource( 2 ), ExtResource( 16 ) ],
+"loop": true,
+"name": "Fall",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ), ExtResource( 11 ), ExtResource( 21 ), ExtResource( 20 ), ExtResource( 10 ), ExtResource( 6 ), ExtResource( 5 ), ExtResource( 4 ), ExtResource( 12 ) ],
+"loop": true,
+"name": "Run",
+"speed": 8.0
+}, {
+"frames": [ ExtResource( 18 ), ExtResource( 8 ) ],
+"loop": true,
+"name": "Run Start",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 63 ), ExtResource( 64 ), ExtResource( 62 ), ExtResource( 65 ), ExtResource( 59 ), ExtResource( 60 ), ExtResource( 61 ), ExtResource( 61 ) ],
+"loop": false,
+"name": "Attack",
 "speed": 5.0
 } ]
 
@@ -132,7 +144,9 @@ extents = Vector2( 1.18308, 5.7838 )
 [sub_resource type="RectangleShape2D" id=8]
 extents = Vector2( 8.38, 16.4141 )
 
-[node name="Player" type="KinematicBody2D"]
+[node name="Player" type="KinematicBody2D" groups=[
+"player",
+]]
 script = ExtResource( 1 )
 speed = 220
 
@@ -146,7 +160,7 @@ position = Vector2( 226.811, 127.033 )
 scale = Vector2( 1.93778, 1.93778 )
 frames = SubResource( 1 )
 animation = "storm"
-frame = 20
+frame = 16
 playing = true
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
@@ -156,7 +170,6 @@ motion_mirroring = Vector2( 640, 640 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="ParallaxBackground/ParallaxLayer"]
 frames = SubResource( 2 )
 animation = "rain"
-frame = 1
 playing = true
 centered = false
 
@@ -167,7 +180,7 @@ shape = SubResource( 3 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 2.38329, 0 )
 frames = SubResource( 4 )
-animation = "Death"
+animation = "Attack"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true

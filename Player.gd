@@ -53,7 +53,7 @@ func get_input():
 	if Input.is_action_just_released('ui_jump'):
 		jump_rel = true
 	var bounce = Input.is_action_just_pressed('ui_bounce')
-	var interact = Input.is_action_pressed('ui_fire')
+	var interact = Input.is_action_just_pressed('ui_fire')
 
 
 	if jump and is_on_floor():
@@ -79,28 +79,9 @@ func get_input():
 	if interact && is_on_floor():
 		interacting = true
 		inLocked = true
-	else:
-		interacting = false
-		
-
-		
-#	if bounce && wallJumpEnable:
-#		#velocity.x += bounceSpeed * bounceDir * 12
-#		velocity.y += bounceSpeed
-#		wallJumpEnable = false
-	
 		
 
 func _physics_process(delta):
-	
-	
-#	if airborne:
-#		if velocity.x > 0:
-#			velocity.x -= speed / 2
-#		if velocity.x < 0:
-#			velocity.x += speed / 2
-#	else:
-
 		
 	velocity.x = 0
 	get_input()
@@ -130,7 +111,12 @@ func _process(delta):
 		dead = true
 		
 	if !dead:
-		if !is_on_floor():
+		if interacting:
+			$AnimatedSprite.speed_scale = 3
+			$AnimatedSprite.play("Attack")
+			if $AnimatedSprite.frame == 7:
+				interacting = false
+		elif !is_on_floor():
 			airborne = true
 			soundPlayer.stop()
 			
@@ -147,7 +133,6 @@ func _process(delta):
 			
 		else:
 			if !inLocked:
-				#soundPlayer.pitch_scale(0.5)
 				airborne = false
 				if $AnimatedSprite.animation == "Fall":
 					$AnimatedSprite.animation = "Run Start"
@@ -156,7 +141,7 @@ func _process(delta):
 				if soundPlayer.get_playback_position() >= 0.3:
 					soundPlayer.stop()
 					pitchFlag = !pitchFlag;
-					
+
 				if right:
 					if !soundPlayer.is_playing():
 						if !pitchFlag:
@@ -164,7 +149,6 @@ func _process(delta):
 						else:
 							soundPlayer.set_pitch_scale(1)
 						soundPlayer.play(0)
-						print (soundPlayer.get_pitch_scale())
 					$AnimatedSprite.flip_h = false
 					if !running:
 						$AnimatedSprite.speed_scale = 0.2
@@ -180,7 +164,6 @@ func _process(delta):
 						else:
 							soundPlayer.set_pitch_scale(1)
 						soundPlayer.play(0)
-						#print (soundPlayer.get_pitch_scale())
 					$AnimatedSprite.flip_h = true
 					if !running:
 						$AnimatedSprite.speed_scale = 0.2
