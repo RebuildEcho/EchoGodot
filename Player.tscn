@@ -65,6 +65,7 @@
 [ext_resource path="res://Sprites/char/hitChar1.png" type="Texture" id=63]
 [ext_resource path="res://Sprites/char/hitChar2.png" type="Texture" id=64]
 [ext_resource path="res://Sprites/char/hitChar4.png" type="Texture" id=65]
+[ext_resource path="res://Fonts/Pixeled.tres" type="DynamicFont" id=66]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -92,14 +93,9 @@ animations = [ {
 "name": "default",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 23 ), ExtResource( 24 ) ],
-"loop": false,
-"name": "Stop",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 19 ), ExtResource( 22 ), ExtResource( 17 ), ExtResource( 13 ) ],
+"frames": [ ExtResource( 14 ), ExtResource( 15 ) ],
 "loop": true,
-"name": "Idle",
+"name": "Fall Start",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 25 ), ExtResource( 26 ), ExtResource( 32 ), ExtResource( 30 ), ExtResource( 29 ), ExtResource( 27 ), ExtResource( 31 ), ExtResource( 28 ) ],
@@ -112,7 +108,17 @@ animations = [ {
 "name": "Fall Start",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 9 ), ExtResource( 7 ), ExtResource( 2 ), ExtResource( 16 ) ],
+"frames": [ ExtResource( 25 ), ExtResource( 26 ), ExtResource( 32 ), ExtResource( 30 ), ExtResource( 29 ), ExtResource( 27 ), ExtResource( 31 ), ExtResource( 28 ) ],
+"loop": false,
+"name": "Death",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 19 ), ExtResource( 22 ), ExtResource( 17 ), ExtResource( 13 ) ],
+"loop": true,
+"name": "Idle",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 18 ), ExtResource( 8 ) ],
 "loop": true,
 "name": "Fall",
 "speed": 5.0
@@ -130,6 +136,10 @@ animations = [ {
 "frames": [ ExtResource( 63 ), ExtResource( 64 ), ExtResource( 62 ), ExtResource( 65 ), ExtResource( 59 ), ExtResource( 60 ), ExtResource( 61 ), ExtResource( 61 ) ],
 "loop": false,
 "name": "Attack",
+"speed": 5.0
+"frames": [ ExtResource( 23 ), ExtResource( 24 ) ],
+"loop": false,
+"name": "Stop",
 "speed": 5.0
 } ]
 
@@ -160,8 +170,72 @@ position = Vector2( 226.811, 127.033 )
 scale = Vector2( 1.93778, 1.93778 )
 frames = SubResource( 1 )
 animation = "storm"
-frame = 16
+frame = 13
 playing = true
+
+[node name="pause_menu" type="Node2D" parent="ParallaxBackground"]
+visible = false
+
+[node name="pause_background" type="ColorRect" parent="ParallaxBackground/pause_menu"]
+margin_right = 1280.0
+margin_bottom = 720.0
+color = Color( 0, 0, 0, 0.376471 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="title" type="Label" parent="ParallaxBackground/pause_menu"]
+margin_left = 580.0
+margin_top = 100.0
+margin_right = 700.0
+margin_bottom = 170.0
+custom_fonts/font = ExtResource( 59 )
+text = "PAUSE"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="btn_main_menu" type="Button" parent="ParallaxBackground/pause_menu"]
+margin_left = 535.0
+margin_top = 470.0
+margin_right = 745.0
+margin_bottom = 550.0
+focus_mode = 0
+custom_fonts/font = ExtResource( 59 )
+enabled_focus_mode = 0
+text = "MAIN MENU"
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="btn_options" type="Button" parent="ParallaxBackground/pause_menu"]
+margin_left = 553.0
+margin_top = 370.0
+margin_right = 725.0
+margin_bottom = 450.0
+custom_fonts/font = ExtResource( 59 )
+disabled = true
+enabled_focus_mode = 0
+text = "OPTIONS"
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="btn_continue" type="Button" parent="ParallaxBackground/pause_menu"]
+margin_left = 542.0
+margin_top = 270.0
+margin_right = 738.0
+margin_bottom = 350.0
+focus_mode = 0
+custom_fonts/font = ExtResource( 59 )
+enabled_focus_mode = 0
+text = "CONTINUE"
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
 modulate = Color( 1, 1, 1, 0.392157 )
@@ -170,6 +244,7 @@ motion_mirroring = Vector2( 640, 640 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="ParallaxBackground/ParallaxLayer"]
 frames = SubResource( 2 )
 animation = "rain"
+frame = 2
 playing = true
 centered = false
 
