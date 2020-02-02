@@ -1,15 +1,16 @@
 extends StaticBody2D
 
 signal repair_signal
-
+onready var anim = get_node("AnimatedSprite")
 var isPlayerInRange = false
 
 func _ready():
-	pass
+	anim.animation = "default"
 
 func _process(delta):
 	var repair = Input.is_action_pressed('ui_fire')
 	if isPlayerInRange && repair:
+		anim.frame = 1
 		emit_signal("repair_signal")
 
 func _on_Area2D_body_entered(body):

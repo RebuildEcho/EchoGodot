@@ -107,6 +107,9 @@ func _process(delta):
 	else:
 		moveSpeed = speed
 	
+	if dead:
+		get_tree().reload_current_scene()
+	
 	if Input.is_key_pressed(KEY_K):
 		dead = true
 		
