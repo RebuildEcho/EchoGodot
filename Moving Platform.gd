@@ -5,7 +5,8 @@ const IDLE = 0.5
 export (String) var source
 
 export (bool) var active = false
-var moveTo = Vector2.RIGHT * 250
+var moveTo
+export (int) var dist
 export var speed = 3.0
 
 onready var platform = $Platform
@@ -14,6 +15,7 @@ onready var tween = $Tween
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	get_parent().get_node(source).connect(str("repair_signal"), self, "on_repaired")
+	moveTo = Vector2.RIGHT * dist
 
 func _process(delta):
 	if active:

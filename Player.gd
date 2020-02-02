@@ -97,6 +97,7 @@ func _physics_process(delta):
 	velocity = move_and_slide(velocity, Vector2(0, -1))
 	
 func _process(delta):
+	var dCounter
 	
 	var right = Input.is_action_pressed('ui_right')
 	var left = Input.is_action_pressed('ui_left')
@@ -106,9 +107,6 @@ func _process(delta):
 		moveSpeed = speed 
 	else:
 		moveSpeed = speed
-	
-	if dead:
-		get_tree().reload_current_scene()
 	
 	if Input.is_key_pressed(KEY_K):
 		dead = true
@@ -181,8 +179,13 @@ func _process(delta):
 					$AnimatedSprite.play("Idle")
 					running = false
 	else:
+		dCounter = 0
 		$AnimatedSprite.play("Death")
-		inLocked = true
+		if $AnimatedSprite.animation == "Death" && $AnimatedSprite.frame == 7:
+			dCounter = dCounter + delta
+			if dCounter == 1:
+				get_tree().reload_current_scene()
+				inLocked = true
 			
 		
 
