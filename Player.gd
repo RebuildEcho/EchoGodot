@@ -9,6 +9,7 @@ export (float) var gravity = 100
 var running
 var wallJumpEnable
 var fallFlag
+var pitchFlag = false
 
 var right_rel = false
 var left_rel = false
@@ -151,9 +152,19 @@ func _process(delta):
 				if $AnimatedSprite.animation == "Fall":
 					$AnimatedSprite.animation = "Run Start"
 				fallFlag = false
+				
+				if soundPlayer.get_playback_position() >= 0.3:
+					soundPlayer.stop()
+					pitchFlag = !pitchFlag;
+					
 				if right:
-					if !soundPlayer.playing:
+					if !soundPlayer.is_playing():
+						if !pitchFlag:
+							soundPlayer.set_pitch_scale(1.5)
+						else:
+							soundPlayer.set_pitch_scale(1)
 						soundPlayer.play(0)
+						print (soundPlayer.get_pitch_scale())
 					$AnimatedSprite.flip_h = false
 					if !running:
 						$AnimatedSprite.speed_scale = 0.2
@@ -163,8 +174,13 @@ func _process(delta):
 						$AnimatedSprite.play("Run")
 					
 				if left:
-					if !soundPlayer.playing:
+					if !soundPlayer.is_playing():
+						if !pitchFlag:
+							soundPlayer.set_pitch_scale(1.5)
+						else:
+							soundPlayer.set_pitch_scale(1)
 						soundPlayer.play(0)
+						print (soundPlayer.get_pitch_scale())
 					$AnimatedSprite.flip_h = true
 					if !running:
 						$AnimatedSprite.speed_scale = 0.2

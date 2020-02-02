@@ -48,24 +48,19 @@ animations = [ {
 "name": "Stop",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 14 ), ExtResource( 15 ) ],
+"frames": [ ExtResource( 19 ), ExtResource( 22 ), ExtResource( 17 ), ExtResource( 13 ) ],
 "loop": true,
-"name": "Fall Start",
+"name": "Idle",
 "speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ), ExtResource( 11 ), ExtResource( 21 ), ExtResource( 20 ), ExtResource( 10 ), ExtResource( 6 ), ExtResource( 5 ), ExtResource( 4 ), ExtResource( 12 ) ],
+"loop": true,
+"name": "Run",
+"speed": 8.0
 }, {
 "frames": [ ExtResource( 9 ), ExtResource( 7 ), ExtResource( 2 ), ExtResource( 16 ) ],
 "loop": true,
 "name": "Fall",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 18 ), ExtResource( 8 ) ],
-"loop": true,
-"name": "Run Start",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 19 ), ExtResource( 22 ), ExtResource( 17 ), ExtResource( 13 ) ],
-"loop": true,
-"name": "Idle",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 25 ), ExtResource( 26 ), ExtResource( 32 ), ExtResource( 30 ), ExtResource( 29 ), ExtResource( 27 ), ExtResource( 31 ), ExtResource( 28 ) ],
@@ -73,9 +68,14 @@ animations = [ {
 "name": "Death",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 3 ), ExtResource( 11 ), ExtResource( 21 ), ExtResource( 20 ), ExtResource( 10 ), ExtResource( 6 ), ExtResource( 5 ), ExtResource( 4 ), ExtResource( 12 ) ],
+"frames": [ ExtResource( 18 ), ExtResource( 8 ) ],
 "loop": true,
-"name": "Run",
+"name": "Run Start",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 14 ), ExtResource( 15 ) ],
+"loop": true,
+"name": "Fall Start",
 "speed": 5.0
 } ]
 
@@ -92,6 +92,7 @@ extents = Vector2( 8.38, 16.4141 )
 
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 1 )
+speed = 220
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
 scale = Vector2( 1, 2 )
