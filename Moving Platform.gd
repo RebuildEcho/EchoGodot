@@ -2,6 +2,8 @@ extends Node2D
 
 const IDLE = 0.5
 
+export (String) var source
+
 export (bool) var active = false
 var moveTo = Vector2.RIGHT * 250
 export var speed = 3.0
@@ -11,7 +13,7 @@ onready var tween = $Tween
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	get_parent().get_node("Control Board").connect("repair_signal", self, "on_repaired")
+	get_parent().get_node(source).connect(str("repair_signal"), self, "on_repaired")
 
 func _process(delta):
 	if active:
