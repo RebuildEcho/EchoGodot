@@ -6,6 +6,7 @@ var start_count = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	Globals.soundPlayer.play()
+	Globals.soundPlayer2.play()
 	
 	$btn_play.connect("pressed", self, "Play")
 	$btn_options.connect("pressed", self, "Options")
