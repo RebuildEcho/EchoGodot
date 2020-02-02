@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=2]
+[gd_scene load_steps=67 format=2]
 
 [ext_resource path="res://Player.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/char/fall_Char4.png" type="Texture" id=2]
@@ -32,11 +32,53 @@
 [ext_resource path="res://Sprites/char/deathChar4.png" type="Texture" id=30]
 [ext_resource path="res://Sprites/char/deathChar7.png" type="Texture" id=31]
 [ext_resource path="res://Sprites/char/deathChar3.png" type="Texture" id=32]
+[ext_resource path="res://Sprites/tiles/rain/rain3.png" type="Texture" id=33]
+[ext_resource path="res://Sprites/tiles/rain/rain4.png" type="Texture" id=34]
+[ext_resource path="res://Sprites/tiles/rain/rain5.png" type="Texture" id=35]
+[ext_resource path="res://Sprites/tiles/rain/rain1.png" type="Texture" id=36]
+[ext_resource path="res://Sprites/tiles/rain/rain2.png" type="Texture" id=37]
+[ext_resource path="res://Sprites/tiles/storm/storm1.png" type="Texture" id=38]
+[ext_resource path="res://Sprites/tiles/storm/storm20.png" type="Texture" id=39]
+[ext_resource path="res://Sprites/tiles/storm/storm5.png" type="Texture" id=40]
+[ext_resource path="res://Sprites/tiles/storm/storm17.png" type="Texture" id=41]
+[ext_resource path="res://Sprites/tiles/storm/storm2.png" type="Texture" id=42]
+[ext_resource path="res://Sprites/tiles/storm/storm3.png" type="Texture" id=43]
+[ext_resource path="res://Sprites/tiles/storm/storm6.png" type="Texture" id=44]
+[ext_resource path="res://Sprites/tiles/storm/storm13.png" type="Texture" id=45]
+[ext_resource path="res://Sprites/tiles/storm/storm4.png" type="Texture" id=46]
+[ext_resource path="res://Sprites/tiles/storm/storm12.png" type="Texture" id=47]
+[ext_resource path="res://Sprites/tiles/storm/storm18.png" type="Texture" id=48]
+[ext_resource path="res://Sprites/tiles/storm/storm19.png" type="Texture" id=49]
+[ext_resource path="res://Sprites/tiles/storm/storm8.png" type="Texture" id=50]
+[ext_resource path="res://Sprites/tiles/storm/storm11.png" type="Texture" id=51]
+[ext_resource path="res://Sprites/tiles/storm/storm10.png" type="Texture" id=52]
+[ext_resource path="res://Sprites/tiles/storm/storm15.png" type="Texture" id=53]
+[ext_resource path="res://Sprites/tiles/storm/storm7.png" type="Texture" id=54]
+[ext_resource path="res://Sprites/tiles/storm/storm9.png" type="Texture" id=55]
+[ext_resource path="res://Sprites/tiles/storm/storm16.png" type="Texture" id=56]
+[ext_resource path="res://Sprites/tiles/storm/storm21.png" type="Texture" id=57]
+[ext_resource path="res://Sprites/tiles/storm/storm14.png" type="Texture" id=58]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 8.03363, 8.13496 )
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 38 ), ExtResource( 42 ), ExtResource( 43 ), ExtResource( 46 ), ExtResource( 40 ), ExtResource( 44 ), ExtResource( 54 ), ExtResource( 50 ), ExtResource( 55 ), ExtResource( 52 ), ExtResource( 51 ), ExtResource( 47 ), ExtResource( 45 ), ExtResource( 58 ), ExtResource( 53 ), ExtResource( 56 ), ExtResource( 41 ), ExtResource( 48 ), ExtResource( 49 ), ExtResource( 39 ), ExtResource( 57 ) ],
+"loop": true,
+"name": "storm",
+"speed": 5.0
+} ]
 
 [sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 36 ), ExtResource( 37 ), ExtResource( 33 ), ExtResource( 34 ), ExtResource( 35 ) ],
+"loop": true,
+"name": "rain",
+"speed": 10.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 8.03363, 8.13496 )
+
+[sub_resource type="SpriteFrames" id=4]
 animations = [ {
 "frames": [  ],
 "loop": true,
@@ -53,24 +95,24 @@ animations = [ {
 "name": "Idle",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 3 ), ExtResource( 11 ), ExtResource( 21 ), ExtResource( 20 ), ExtResource( 10 ), ExtResource( 6 ), ExtResource( 5 ), ExtResource( 4 ), ExtResource( 12 ) ],
-"loop": true,
-"name": "Run",
-"speed": 8.0
-}, {
 "frames": [ ExtResource( 9 ), ExtResource( 7 ), ExtResource( 2 ), ExtResource( 16 ) ],
 "loop": true,
 "name": "Fall",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 25 ), ExtResource( 26 ), ExtResource( 32 ), ExtResource( 30 ), ExtResource( 29 ), ExtResource( 27 ), ExtResource( 31 ), ExtResource( 28 ) ],
-"loop": false,
-"name": "Death",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 18 ), ExtResource( 8 ) ],
 "loop": true,
 "name": "Run Start",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ), ExtResource( 11 ), ExtResource( 21 ), ExtResource( 20 ), ExtResource( 10 ), ExtResource( 6 ), ExtResource( 5 ), ExtResource( 4 ), ExtResource( 12 ) ],
+"loop": true,
+"name": "Run",
+"speed": 8.0
+}, {
+"frames": [ ExtResource( 25 ), ExtResource( 26 ), ExtResource( 32 ), ExtResource( 30 ), ExtResource( 29 ), ExtResource( 27 ), ExtResource( 31 ), ExtResource( 28 ) ],
+"loop": false,
+"name": "Death",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 14 ), ExtResource( 15 ) ],
@@ -79,28 +121,52 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="AudioStreamSample" id=3]
-
-[sub_resource type="RectangleShape2D" id=4]
-extents = Vector2( 1.2472, 5.06374 )
-
-[sub_resource type="RectangleShape2D" id=5]
-extents = Vector2( 1.18308, 5.7838 )
+[sub_resource type="AudioStreamSample" id=5]
 
 [sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 1.2472, 5.06374 )
+
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 1.18308, 5.7838 )
+
+[sub_resource type="RectangleShape2D" id=8]
 extents = Vector2( 8.38, 16.4141 )
 
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 1 )
 speed = 220
 
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="storm" type="Node2D" parent="ParallaxBackground"]
+scale = Vector2( 2.77872, 2.77872 )
+
+[node name="stormsprite" type="AnimatedSprite" parent="ParallaxBackground/storm"]
+position = Vector2( 226.811, 127.033 )
+scale = Vector2( 1.93778, 1.93778 )
+frames = SubResource( 1 )
+animation = "storm"
+frame = 20
+playing = true
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+modulate = Color( 1, 1, 1, 0.392157 )
+motion_mirroring = Vector2( 640, 640 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="ParallaxBackground/ParallaxLayer"]
+frames = SubResource( 2 )
+animation = "rain"
+frame = 1
+playing = true
+centered = false
+
 [node name="Hitbox" type="CollisionShape2D" parent="."]
 scale = Vector2( 1, 2 )
-shape = SubResource( 1 )
+shape = SubResource( 3 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 2.38329, 0 )
-frames = SubResource( 2 )
+frames = SubResource( 4 )
 animation = "Death"
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -108,7 +174,7 @@ current = true
 zoom = Vector2( 0.5, 0.5 )
 
 [node name="Player Run" type="AudioStreamPlayer" parent="."]
-stream = SubResource( 3 )
+stream = SubResource( 5 )
 
 [node name="wallJump Collider R" type="Area2D" parent="."]
 collision_layer = 2
@@ -116,18 +182,18 @@ collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="wallJump Collider R"]
 position = Vector2( 12.2794, 0.179489 )
-shape = SubResource( 4 )
+shape = SubResource( 6 )
 
 [node name="wallJump Collider L" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="wallJump Collider L"]
 position = Vector2( -13.3235, 0.450819 )
-shape = SubResource( 5 )
+shape = SubResource( 7 )
 
 [node name="Death Hitbox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Death Hitbox"]
-shape = SubResource( 6 )
+shape = SubResource( 8 )
 [connection signal="body_entered" from="wallJump Collider R" to="." method="_on_wallJump_Collider_R_body_entered"]
 [connection signal="body_entered" from="wallJump Collider L" to="." method="_on_wallJump_Collider_L_body_entered"]
 [connection signal="body_entered" from="Death Hitbox" to="." method="_on_Death_Hitbox_body_entered"]

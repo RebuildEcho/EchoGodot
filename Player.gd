@@ -180,7 +180,7 @@ func _process(delta):
 						else:
 							soundPlayer.set_pitch_scale(1)
 						soundPlayer.play(0)
-						print (soundPlayer.get_pitch_scale())
+						#print (soundPlayer.get_pitch_scale())
 					$AnimatedSprite.flip_h = true
 					if !running:
 						$AnimatedSprite.speed_scale = 0.2
