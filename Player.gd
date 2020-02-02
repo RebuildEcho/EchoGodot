@@ -15,6 +15,7 @@ var right_rel = false
 var left_rel = false
 var jump_rel = false
 
+var dying = false
 var bounceDir
 var velocity = Vector2()
 var vSpeed = 0
@@ -178,10 +179,11 @@ func _process(delta):
 					running = false
 	else:
 		$AnimatedSprite.play("Death")
-		if $AnimatedSprite.animation == "Death" && $AnimatedSprite.frame == 7:
-			dCounter = dCounter + delta
+		if $AnimatedSprite.animation == "Death":
 			inLocked = true
-			$"Death Timer".start(1)
+			if !dying && $AnimatedSprite.frame == 7:
+				$"Death Timer".start(1)
+				dying = true
 				
 				
 			
