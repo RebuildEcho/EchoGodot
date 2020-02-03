@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/violin and timpani and piano and harp and horn.ogg-c69882daf4a2bb256e5b254d1b24280f.oggstr"
+
+[deps]
+
+source_file="res://Sounds/violin and timpani and piano and harp and horn.ogg"
+dest_files=[ "res://.import/violin and timpani and piano and harp and horn.ogg-c69882daf4a2bb256e5b254d1b24280f.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/rain_and_thunder.wav-c34f14f8a2c7632999b8c1be852d382f.sample"
+
+[deps]
+
+source_file="res://Sounds/rain_and_thunder.wav"
+dest_files=[ "res://.import/rain_and_thunder.wav-c34f14f8a2c7632999b8c1be852d382f.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=true
+compress/mode=0

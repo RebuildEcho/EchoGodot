@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/piano and harp and horn.ogg-8974bc5126e3e6723303fd196f13796f.oggstr"
+
+[deps]
+
+source_file="res://Sounds/piano and harp and horn.ogg"
+dest_files=[ "res://.import/piano and harp and horn.ogg-8974bc5126e3e6723303fd196f13796f.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
