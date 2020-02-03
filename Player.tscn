@@ -94,25 +94,15 @@ animations = [ {
 "name": "default",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 3 ), ExtResource( 11 ), ExtResource( 21 ), ExtResource( 20 ), ExtResource( 10 ), ExtResource( 6 ), ExtResource( 5 ), ExtResource( 4 ), ExtResource( 12 ) ],
-"loop": true,
-"name": "Run",
-"speed": 8.0
-}, {
-"frames": [ ExtResource( 14 ), ExtResource( 15 ) ],
-"loop": true,
-"name": "Fall Start",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 25 ), ExtResource( 26 ), ExtResource( 32 ), ExtResource( 30 ), ExtResource( 29 ), ExtResource( 27 ), ExtResource( 31 ), ExtResource( 28 ) ],
-"loop": false,
-"name": "Death",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 18 ), ExtResource( 8 ) ],
 "loop": true,
 "name": "Run Start",
 "speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ), ExtResource( 11 ), ExtResource( 21 ), ExtResource( 20 ), ExtResource( 10 ), ExtResource( 6 ), ExtResource( 5 ), ExtResource( 4 ), ExtResource( 12 ) ],
+"loop": true,
+"name": "Run",
+"speed": 8.0
 }, {
 "frames": [ ExtResource( 7 ), ExtResource( 2 ), ExtResource( 16 ), ExtResource( 66 ) ],
 "loop": true,
@@ -122,6 +112,16 @@ animations = [ {
 "frames": [ ExtResource( 63 ), ExtResource( 64 ), ExtResource( 62 ), ExtResource( 65 ), ExtResource( 59 ), ExtResource( 60 ), ExtResource( 61 ), ExtResource( 61 ) ],
 "loop": false,
 "name": "Attack",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 14 ), ExtResource( 15 ) ],
+"loop": true,
+"name": "Fall Start",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 25 ), ExtResource( 26 ), ExtResource( 32 ), ExtResource( 30 ), ExtResource( 29 ), ExtResource( 27 ), ExtResource( 31 ), ExtResource( 28 ) ],
+"loop": false,
+"name": "Death",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 19 ), ExtResource( 22 ), ExtResource( 17 ), ExtResource( 13 ) ],
@@ -159,10 +159,10 @@ scale = Vector2( 2.77872, 2.77872 )
 
 [node name="stormsprite" type="AnimatedSprite" parent="ParallaxBackground/storm"]
 position = Vector2( 226.811, 127.033 )
-scale = Vector2( 1.948, 1.948 )
+scale = Vector2( 1.93778, 1.93778 )
 frames = SubResource( 1 )
 animation = "storm"
-frame = 14
+frame = 19
 playing = true
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
@@ -172,7 +172,6 @@ motion_mirroring = Vector2( 640, 640 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="ParallaxBackground/ParallaxLayer"]
 frames = SubResource( 2 )
 animation = "rain"
-frame = 4
 playing = true
 centered = false
 
