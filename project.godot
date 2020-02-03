@@ -17,7 +17,8 @@ _global_script_class_icons={
 
 config/name="Echo"
 run/main_scene="res://MainMenu.tscn"
-config/icon="res://icon.png"
+boot_splash/image="res://Sprites/GOD/godhead_half.png"
+config/icon="res://Sprites/GOD/godhead_half.png"
 
 [autoload]
 
@@ -81,4 +82,5 @@ ui_fire={
 
 [rendering]
 
+environment/default_clear_color=Color( 1, 0, 0, 1 )
 environment/default_environment="res://default_env.tres"
