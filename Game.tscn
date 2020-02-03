@@ -11,7 +11,7 @@
 script = ExtResource( 3 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 55.4861, -18.9242 )
+position = Vector2( 54.0159, -18.9242 )
 z_index = 1
 jumpSpeed = -300
 
@@ -50,7 +50,7 @@ position = Vector2( -437.899, 119.609 )
 position = Vector2( -506.868, 120.323 )
 
 [node name="Spike10" parent="spikes" instance=ExtResource( 5 )]
-position = Vector2( -526.37, 118.231 )
+position = Vector2( -526.37, 117.231 )
 
 [node name="Spike11" parent="spikes" instance=ExtResource( 5 )]
 position = Vector2( -546.347, 118.658 )
