@@ -94,9 +94,19 @@ animations = [ {
 "name": "default",
 "speed": 5.0
 }, {
+"frames": [ ExtResource( 23 ), ExtResource( 24 ) ],
+"loop": false,
+"name": "Stop",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 18 ), ExtResource( 8 ) ],
 "loop": true,
 "name": "Run Start",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 63 ), ExtResource( 64 ), ExtResource( 62 ), ExtResource( 65 ), ExtResource( 59 ), ExtResource( 60 ), ExtResource( 61 ), ExtResource( 61 ) ],
+"loop": false,
+"name": "Attack",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 3 ), ExtResource( 11 ), ExtResource( 21 ), ExtResource( 20 ), ExtResource( 10 ), ExtResource( 6 ), ExtResource( 5 ), ExtResource( 4 ), ExtResource( 12 ) ],
@@ -104,14 +114,9 @@ animations = [ {
 "name": "Run",
 "speed": 8.0
 }, {
-"frames": [ ExtResource( 7 ), ExtResource( 2 ), ExtResource( 16 ), ExtResource( 66 ) ],
+"frames": [ ExtResource( 19 ), ExtResource( 22 ), ExtResource( 17 ), ExtResource( 13 ) ],
 "loop": true,
-"name": "Fall",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 63 ), ExtResource( 64 ), ExtResource( 62 ), ExtResource( 65 ), ExtResource( 59 ), ExtResource( 60 ), ExtResource( 61 ), ExtResource( 61 ) ],
-"loop": false,
-"name": "Attack",
+"name": "Idle",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 14 ), ExtResource( 15 ) ],
@@ -124,14 +129,9 @@ animations = [ {
 "name": "Death",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 19 ), ExtResource( 22 ), ExtResource( 17 ), ExtResource( 13 ) ],
+"frames": [ ExtResource( 7 ), ExtResource( 2 ), ExtResource( 16 ), ExtResource( 66 ) ],
 "loop": true,
-"name": "Idle",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 23 ), ExtResource( 24 ) ],
-"loop": false,
-"name": "Stop",
+"name": "Fall",
 "speed": 5.0
 } ]
 
@@ -158,11 +158,11 @@ speed = 220
 scale = Vector2( 2.77872, 2.77872 )
 
 [node name="stormsprite" type="AnimatedSprite" parent="ParallaxBackground/storm"]
-position = Vector2( 226.811, 127.033 )
-scale = Vector2( 1.93778, 1.93778 )
+position = Vector2( 231.628, 129.615 )
+scale = Vector2( 1.97632, 1.97632 )
 frames = SubResource( 1 )
 animation = "storm"
-frame = 19
+frame = 8
 playing = true
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
