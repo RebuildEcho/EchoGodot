@@ -73,7 +73,7 @@ position = Vector2( -619.359, 102.961 )
 position = Vector2( -638.861, 102.724 )
 
 [node name="Spike16" parent="spikes" instance=ExtResource( 5 )]
-position = Vector2( -659.426, 111.348 )
+position = Vector2( -658.842, 102.88 )
 
 [node name="Spike9" parent="spikes" instance=ExtResource( 5 )]
 position = Vector2( -472.621, 135.068 )
