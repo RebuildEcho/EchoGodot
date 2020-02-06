@@ -28,10 +28,13 @@ jumpSpeed = -300
 position = Vector2( -320.442, 103.342 )
 
 [node name="Spike17" parent="spikes" instance=ExtResource( 5 )]
-position = Vector2( 1700.62, -153.653 )
+position = Vector2( 1685.83, -57.5265 )
+
+[node name="Spike18" parent="spikes" instance=ExtResource( 5 )]
+position = Vector2( 1666.49, -58.0952 )
 
 [node name="Spike19" parent="spikes" instance=ExtResource( 5 )]
-position = Vector2( 1559.99, -57.4665 )
+position = Vector2( 1666.49, -58.0952 )
 
 [node name="Spike2" parent="spikes" instance=ExtResource( 5 )]
 position = Vector2( -341.573, 103.719 )
