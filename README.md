@@ -1,2 +1,2 @@
 # EchoGodot
-This is a side-scroller puzzle game called "Rebuild Echo". It is being built under the GGJ 2020 theme: "Repair".
+This is a side-scroller puzzle game called "Rebuild Echo". It's original concept was written in GGJ 2020.
