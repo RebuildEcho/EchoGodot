@@ -85,7 +85,7 @@ position = Vector2( -472.621, 135.068 )
 position = Vector2( 2468.71, -160.266 )
 
 [node name="Moving Platform" parent="." instance=ExtResource( 6 )]
-position = Vector2( 2157.65, -140.735 )
+position = Vector2( 2153.03, -139.658 )
 source = "cb1"
 dist = 200
 
