@@ -24,6 +24,7 @@ var left_rel = false
 var jump_rel = false
 
 var dying = false
+var checkpointPosition
 var bounceDir
 var velocity = Vector2()
 var vSpeed = 0
@@ -51,6 +52,7 @@ func _ready():
 	inLocked = false
 	using = false
 	dead = false
+	checkpointPosition = global_position
 	
 	soundPlayer = AudioStreamPlayer.new()
 	self.add_child(soundPlayer)
