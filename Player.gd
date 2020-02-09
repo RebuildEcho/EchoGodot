@@ -114,8 +114,8 @@ func _physics_process(delta):
 	velocity = move_and_slide(velocity, Vector2(0, -1))
 	
 func _process(delta):
-#	var right = Input.is_action_just_pressed('ui_right')
-#	var left = Input.is_action_just_pressed('ui_left')
+	var right = Input.is_action_pressed('ui_right')
+	var left = Input.is_action_pressed('ui_left')
 	var jump = Input.is_action_pressed('ui_jump')
 	var interact = Input.is_action_pressed('ui_fire')
 	
@@ -143,11 +143,11 @@ func _process(delta):
 	if !dead:
 		if is_on_floor():
 			if !animLock:
-				if velocity.x > 0 && currAnim != "Run":
+				if right && currAnim != "Run":
 					$AnimationSprites.scale.x = 1
 					currAnim = "Run"
 					
-				if velocity.x < 0 && currAnim != "Run":
+				if left && currAnim != "Run":
 					$AnimationSprites.scale.x = -1
 					currAnim = "Run"		
 					
@@ -205,7 +205,8 @@ func _on_Death_Hitbox_body_entered(body):
 
 
 func _on_Timer_timeout():
-	get_tree().reload_current_scene()
+	dead = false
+	global_position = checkpointPosition
 
 func _on_Lock_Timer_timeout():
 	animLock = false
