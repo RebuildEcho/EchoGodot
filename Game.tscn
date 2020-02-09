@@ -116,5 +116,5 @@ position = Vector2( 316.705, 214.273 )
 shape = SubResource( 1 )
 
 [node name="Checkpoint" parent="." instance=ExtResource( 9 )]
-position = Vector2( 2116.78, -224.551 )
+position = Vector2( 2116.08, -224.153 )
 [connection signal="body_entered" from="Label/Area2D" to="Label" method="_on_Area2D_body_entered"]
