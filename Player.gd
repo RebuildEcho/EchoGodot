@@ -120,14 +120,31 @@ func _process(delta):
 	if Input.is_key_pressed(KEY_K):
 		dead = true
 	
-	#Add animation control statements here
+
+	#add sound statements here
 	
+	if soundPlayer.get_playback_position() >= 0.3:
+		soundPlayer.stop()
+		pitchFlag = !pitchFlag;
+		
+	if !soundPlayer.is_playing():
+		if !pitchFlag:
+			soundPlayer.set_pitch_scale(1.5)
+		else:
+			soundPlayer.set_pitch_scale(1)
+		if currAnim == "Run":
+			soundPlayer.play(0)
+
+
+	#Add animation control statements here
+		
 	if !dead:
 		if is_on_floor():
 			if !animLock:
 				if velocity.x > 0 && currAnim != "Run":
 					$AnimationSprites.scale.x = 1
 					currAnim = "Run"
+					
 				if velocity.x < 0 && currAnim != "Run":
 					$AnimationSprites.scale.x = -1
 					currAnim = "Run"		
