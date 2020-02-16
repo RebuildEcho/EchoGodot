@@ -227,28 +227,26 @@ position = Vector2( 655.763, 362.526 )
 scale = Vector2( 5.6, 5.6 )
 frames = SubResource( 1 )
 animation = "storm"
-frame = 6
+frame = 17
 playing = true
 
 [node name="rainSprite" type="AnimatedSprite" parent="bg"]
 position = Vector2( 1278.39, 310.734 )
 frames = SubResource( 2 )
 animation = "rain"
-frame = 7
+frame = 1
 playing = true
 
 [node name="rainSprite2" type="AnimatedSprite" parent="bg"]
 position = Vector2( 638.709, 310.54 )
 frames = SubResource( 2 )
 animation = "rain"
-frame = 6
 playing = true
 
 [node name="rainSprite3" type="AnimatedSprite" parent="bg"]
 position = Vector2( 0.0985984, 310.573 )
 frames = SubResource( 2 )
 animation = "rain"
-frame = 6
 playing = true
 
 [node name="tiles" type="Node2D" parent="."]
