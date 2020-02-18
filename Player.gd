@@ -11,8 +11,9 @@ var prevAnim
 var startAnim
 var finAnim
 var animLock
+var animFlag = false
 #If an animation needs to play for full duration add its name here
-var switchAtEnd = ["Hit"]
+var switchAtEnd = ["Hit", "RunStart", "RunStop", "Jump", "Land"]
 
 var running
 var wallJumpEnable
@@ -145,14 +146,24 @@ func _process(delta):
 			if !animLock:
 				if right && currAnim != "Run":
 					$AnimationSprites.scale.x = 1
-					currAnim = "Run"
+					if !animFlag:
+						animFlag = true
+						print_debug(animFlag)
+						currAnim = "RunStart"
+					else:
+						currAnim = "Run"
 					
 				if left && currAnim != "Run":
 					$AnimationSprites.scale.x = -1
-					currAnim = "Run"		
+					if !animFlag:
+						animFlag = true
+						currAnim = "RunStart"
+					else:
+						currAnim = "Run"		
 					
 				if velocity == Vector2(0,0):
 					currAnim = "Idle"
+					animFlag = false
 					
 				if interact:
 					currAnim = "Hit"
@@ -187,6 +198,7 @@ func switch_animation():
 		if prevAnim != currAnim:
 			prevAnim = currAnim
 		if switchAtEnd.has(currAnim):
+			print_debug(currAnim)
 			animLock = true	
 		if animLock:
 			$"Lock Timer".start($AnimationPlayer.current_animation_length)
