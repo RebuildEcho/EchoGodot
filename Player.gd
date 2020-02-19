@@ -126,17 +126,17 @@ func _process(delta):
 
 	#add sound statements here
 	
-	if soundPlayer.get_playback_position() >= 0.3:
-		soundPlayer.stop()
-		pitchFlag = !pitchFlag;
-		
-	if !soundPlayer.is_playing():
-		if !pitchFlag:
-			soundPlayer.set_pitch_scale(1.5)
-		else:
-			soundPlayer.set_pitch_scale(1)
-		if currAnim == "Run":
-			soundPlayer.play(0)
+#	if soundPlayer.get_playback_position() >= 0.3:
+#		soundPlayer.stop()
+#		pitchFlag = !pitchFlag;
+#		
+#	if !soundPlayer.is_playing():
+#		if !pitchFlag:
+#			soundPlayer.set_pitch_scale(1.5)
+#		else:
+#			soundPlayer.set_pitch_scale(1)
+#		if currAnim == "Run":
+#			soundPlayer.play(0)
 
 
 	#Add animation control statements here

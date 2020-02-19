@@ -1,4 +1,4 @@
-[gd_scene load_steps=114 format=2]
+[gd_scene load_steps=116 format=2]
 
 [ext_resource path="res://Player.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/char/fall_Char4.png" type="Texture" id=2]
@@ -76,6 +76,9 @@
 [ext_resource path="res://Sprites/char/sheets/idleChar1-sheet.png" type="Texture" id=74]
 [ext_resource path="res://Sprites/char/sheets/stopChar1-sheet.png" type="Texture" id=75]
 [ext_resource path="res://Sprites/char/sheets/startChar1-sheet.png" type="Texture" id=76]
+[ext_resource path="res://Sounds/step.wav" type="AudioStream" id=77]
+[ext_resource path="res://Sounds/slipping.wav" type="AudioStream" id=78]
+[ext_resource path="res://Sounds/land.wav" type="AudioStream" id=79]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -95,8 +98,6 @@ animations = [ {
 
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 8.03363, 8.13496 )
-
-[sub_resource type="AudioStreamSample" id=4]
 
 [sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 1.2472, 5.06374 )
@@ -189,7 +190,7 @@ tracks/0/keys = {
 }
 
 [sub_resource type="Animation" id=13]
-length = 0.25
+length = 0.3
 step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("AnimationSprites/Land:frame")
@@ -203,9 +204,23 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 0, 1, 2 ]
 }
+tracks/1/type = "audio"
+tracks/1/path = NodePath("Player Audio")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"clips": [ {
+"end_offset": 0.548117,
+"start_offset": 0.3,
+"stream": ExtResource( 79 )
+} ],
+"times": PoolRealArray( 0 )
+}
 
 [sub_resource type="Animation" id=14]
-length = 0.9
+length = 0.8
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("AnimationSprites/Run:frame")
@@ -219,10 +234,40 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8 ]
 }
+tracks/1/type = "audio"
+tracks/1/path = NodePath("Player Audio")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 77 )
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 77 )
+} ],
+"times": PoolRealArray( 0.2, 0.6 )
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Player Audio:pitch_scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.2, 0.6 ),
+"transitions": PoolRealArray( 1, 1.7411 ),
+"update": 0,
+"values": [ 1.0, 1.5 ]
+}
 
 [sub_resource type="Animation" id=15]
 resource_name = "RunStart"
-length = 0.4
+length = 0.2
 tracks/0/type = "value"
 tracks/0/path = NodePath("AnimationSprites/RunStart:frame")
 tracks/0/interp = 1
@@ -230,7 +275,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.3 ),
+"times": PoolRealArray( 0, 0.1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ 0, 1 ]
@@ -238,7 +283,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=16]
 resource_name = "RunStop"
-length = 0.4
+length = 0.3
 tracks/0/type = "value"
 tracks/0/path = NodePath("AnimationSprites/RunStop:frame")
 tracks/0/interp = 1
@@ -250,6 +295,20 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ 0, 1 ]
+}
+tracks/1/type = "audio"
+tracks/1/path = NodePath("Player Audio")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"clips": [ {
+"end_offset": 0.401409,
+"start_offset": 0.33,
+"stream": ExtResource( 78 )
+} ],
+"times": PoolRealArray( 0 )
 }
 
 [sub_resource type="AnimationNodeAnimation" id=17]
@@ -338,21 +397,6 @@ animations = [ {
 "name": "default",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 23 ), ExtResource( 24 ) ],
-"loop": false,
-"name": "Stop",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 19 ), ExtResource( 22 ), ExtResource( 17 ), ExtResource( 13 ) ],
-"loop": true,
-"name": "Idle",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 3 ), ExtResource( 11 ), ExtResource( 21 ), ExtResource( 20 ), ExtResource( 10 ), ExtResource( 6 ), ExtResource( 5 ), ExtResource( 4 ), ExtResource( 12 ) ],
-"loop": true,
-"name": "Run",
-"speed": 8.0
-}, {
 "frames": [ ExtResource( 25 ), ExtResource( 26 ), ExtResource( 32 ), ExtResource( 30 ), ExtResource( 29 ), ExtResource( 27 ), ExtResource( 31 ), ExtResource( 28 ) ],
 "loop": false,
 "name": "Death",
@@ -361,6 +405,21 @@ animations = [ {
 "frames": [ ExtResource( 18 ), ExtResource( 8 ) ],
 "loop": true,
 "name": "Run Start",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ), ExtResource( 11 ), ExtResource( 21 ), ExtResource( 20 ), ExtResource( 10 ), ExtResource( 6 ), ExtResource( 5 ), ExtResource( 4 ), ExtResource( 12 ) ],
+"loop": true,
+"name": "Run",
+"speed": 8.0
+}, {
+"frames": [ ExtResource( 19 ), ExtResource( 22 ), ExtResource( 17 ), ExtResource( 13 ) ],
+"loop": true,
+"name": "Idle",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 14 ), ExtResource( 15 ) ],
+"loop": true,
+"name": "Fall Start",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 63 ), ExtResource( 64 ), ExtResource( 62 ), ExtResource( 65 ), ExtResource( 59 ), ExtResource( 60 ), ExtResource( 61 ), ExtResource( 61 ) ],
@@ -373,9 +432,9 @@ animations = [ {
 "name": "Fall",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 14 ), ExtResource( 15 ) ],
-"loop": true,
-"name": "Fall Start",
+"frames": [ ExtResource( 23 ), ExtResource( 24 ) ],
+"loop": false,
+"name": "Stop",
 "speed": 5.0
 } ]
 
@@ -395,7 +454,7 @@ position = Vector2( 231.628, 129.615 )
 scale = Vector2( 1.97632, 1.97632 )
 frames = SubResource( 1 )
 animation = "storm"
-frame = 7
+frame = 4
 playing = true
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
@@ -405,6 +464,7 @@ motion_mirroring = Vector2( 640, 640 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="ParallaxBackground/ParallaxLayer"]
 frames = SubResource( 2 )
 animation = "rain"
+frame = 3
 playing = true
 centered = false
 
@@ -494,8 +554,9 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Player Run" type="AudioStreamPlayer" parent="."]
-stream = SubResource( 4 )
+[node name="Player Audio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 79 )
+pitch_scale = 1.39858
 
 [node name="wallJump Collider R" type="Area2D" parent="."]
 collision_layer = 2
@@ -531,13 +592,12 @@ hframes = 4
 visible = false
 texture = ExtResource( 76 )
 hframes = 2
-frame = 1
 
 [node name="Run" type="Sprite" parent="AnimationSprites"]
 visible = false
 texture = ExtResource( 73 )
 hframes = 9
-frame = 4
+frame = 8
 
 [node name="RunStop" type="Sprite" parent="AnimationSprites"]
 visible = false
@@ -560,6 +620,7 @@ hframes = 5
 visible = false
 texture = ExtResource( 70 )
 hframes = 3
+frame = 2
 
 [node name="Hit" type="Sprite" parent="AnimationSprites"]
 visible = false

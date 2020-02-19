@@ -227,6 +227,7 @@ position = Vector2( 655.763, 362.526 )
 scale = Vector2( 5.6, 5.6 )
 frames = SubResource( 1 )
 animation = "storm"
+frame = 9
 playing = true
 
 [node name="rainSprite" type="AnimatedSprite" parent="bg"]
