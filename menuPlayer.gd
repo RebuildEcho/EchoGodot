@@ -22,7 +22,7 @@ func _process(delta):
 		$AnimatedSprite.speed_scale = 0.25
 		$AnimatedSprite.play("menuIdle")
 	else:
-		$AnimatedSprite.speed_scale = 1.5
+		$AnimatedSprite.speed_scale = 1
 		$AnimatedSprite.play("menuRun")
 
 func _on_btn_play_pressed():

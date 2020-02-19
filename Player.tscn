@@ -99,16 +99,16 @@ animations = [ {
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 8.03363, 8.13496 )
 
-[sub_resource type="RectangleShape2D" id=5]
+[sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 1.2472, 5.06374 )
 
-[sub_resource type="RectangleShape2D" id=6]
+[sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 1.18308, 5.7838 )
 
-[sub_resource type="RectangleShape2D" id=7]
+[sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 8.38, 16.4141 )
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=7]
 resource_name = "Airborne"
 length = 0.5
 loop = true
@@ -125,7 +125,7 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 3, 4 ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=8]
 resource_name = "Death"
 length = 0.85
 tracks/0/type = "value"
@@ -141,7 +141,7 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8 ]
 }
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=9]
 resource_name = "Hit"
 length = 0.9
 tracks/0/type = "value"
@@ -157,7 +157,7 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8 ]
 }
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=10]
 length = 4.0
 loop = true
 tracks/0/type = "value"
@@ -173,7 +173,7 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 3 ]
 }
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=11]
 length = 0.2
 step = 0.05
 tracks/0/type = "value"
@@ -189,7 +189,7 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 3 ]
 }
 
-[sub_resource type="Animation" id=13]
+[sub_resource type="Animation" id=12]
 length = 0.3
 step = 0.05
 tracks/0/type = "value"
@@ -218,8 +218,20 @@ tracks/1/keys = {
 } ],
 "times": PoolRealArray( 0 )
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("Player Audio:pitch_scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 2.21914 ),
+"update": 0,
+"values": [ 0.6 ]
+}
 
-[sub_resource type="Animation" id=14]
+[sub_resource type="Animation" id=13]
 length = 0.8
 loop = true
 tracks/0/type = "value"
@@ -265,7 +277,7 @@ tracks/2/keys = {
 "values": [ 1.0, 1.5 ]
 }
 
-[sub_resource type="Animation" id=15]
+[sub_resource type="Animation" id=14]
 resource_name = "RunStart"
 length = 0.2
 tracks/0/type = "value"
@@ -281,7 +293,7 @@ tracks/0/keys = {
 "values": [ 0, 1 ]
 }
 
-[sub_resource type="Animation" id=16]
+[sub_resource type="Animation" id=15]
 resource_name = "RunStop"
 length = 0.3
 tracks/0/type = "value"
@@ -311,100 +323,95 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 )
 }
 
-[sub_resource type="AnimationNodeAnimation" id=17]
+[sub_resource type="AnimationNodeAnimation" id=16]
 animation = "Airborne"
 
-[sub_resource type="AnimationNodeAnimation" id=18]
+[sub_resource type="AnimationNodeAnimation" id=17]
 animation = "Death"
 
-[sub_resource type="AnimationNodeAnimation" id=19]
+[sub_resource type="AnimationNodeAnimation" id=18]
 animation = "Hit"
 
-[sub_resource type="AnimationNodeAnimation" id=20]
+[sub_resource type="AnimationNodeAnimation" id=19]
 animation = "Idle"
 
-[sub_resource type="AnimationNodeAnimation" id=21]
+[sub_resource type="AnimationNodeAnimation" id=20]
 animation = "Jump"
 
-[sub_resource type="AnimationNodeAnimation" id=22]
+[sub_resource type="AnimationNodeAnimation" id=21]
 animation = "Land"
 
-[sub_resource type="AnimationNodeAnimation" id=23]
+[sub_resource type="AnimationNodeAnimation" id=22]
 animation = "Run"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=24]
+[sub_resource type="AnimationNodeStateMachineTransition" id=23]
 switch_mode = 2
 auto_advance = true
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=25]
+[sub_resource type="AnimationNodeStateMachineTransition" id=24]
 advance_condition = "Hit"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=26]
+[sub_resource type="AnimationNodeStateMachineTransition" id=25]
 switch_mode = 2
 auto_advance = true
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=27]
+[sub_resource type="AnimationNodeStateMachineTransition" id=26]
 advance_condition = "Land"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=28]
+[sub_resource type="AnimationNodeStateMachineTransition" id=27]
 advance_condition = "Run"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=29]
+[sub_resource type="AnimationNodeStateMachineTransition" id=28]
 switch_mode = 2
 auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=29]
+advance_condition = "Jump"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=30]
 advance_condition = "Jump"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=31]
-advance_condition = "Jump"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=32]
 advance_condition = "Hit"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=33]
+[sub_resource type="AnimationNodeStateMachineTransition" id=32]
 advance_condition = "Idle"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=34]
+[sub_resource type="AnimationNodeStateMachineTransition" id=33]
 advance_condition = "Death"
 
-[sub_resource type="AnimationNodeStateMachine" id=35]
-states/Airborne/node = SubResource( 17 )
+[sub_resource type="AnimationNodeStateMachine" id=34]
+states/Airborne/node = SubResource( 16 )
 states/Airborne/position = Vector2( 1057, 103 )
-states/Death/node = SubResource( 18 )
+states/Death/node = SubResource( 17 )
 states/Death/position = Vector2( 395, 103 )
-states/Hit/node = SubResource( 19 )
+states/Hit/node = SubResource( 18 )
 states/Hit/position = Vector2( 395, 238 )
-states/Idle/node = SubResource( 20 )
+states/Idle/node = SubResource( 19 )
 states/Idle/position = Vector2( 588, 103 )
-states/Jump/node = SubResource( 21 )
+states/Jump/node = SubResource( 20 )
 states/Jump/position = Vector2( 784, 103 )
-states/Land/node = SubResource( 22 )
+states/Land/node = SubResource( 21 )
 states/Land/position = Vector2( 784, 28 )
-states/Run/node = SubResource( 23 )
+states/Run/node = SubResource( 22 )
 states/Run/position = Vector2( 588, 216 )
-transitions = [ "Jump", "Airborne", SubResource( 24 ), "Idle", "Hit", SubResource( 25 ), "Hit", "Idle", SubResource( 26 ), "Airborne", "Land", SubResource( 27 ), "Idle", "Run", SubResource( 28 ), "Land", "Idle", SubResource( 29 ), "Idle", "Jump", SubResource( 30 ), "Run", "Jump", SubResource( 31 ), "Run", "Hit", SubResource( 32 ), "Run", "Idle", SubResource( 33 ), "Idle", "Death", SubResource( 34 ) ]
+transitions = [ "Jump", "Airborne", SubResource( 23 ), "Idle", "Hit", SubResource( 24 ), "Hit", "Idle", SubResource( 25 ), "Airborne", "Land", SubResource( 26 ), "Idle", "Run", SubResource( 27 ), "Land", "Idle", SubResource( 28 ), "Idle", "Jump", SubResource( 29 ), "Run", "Jump", SubResource( 30 ), "Run", "Hit", SubResource( 31 ), "Run", "Idle", SubResource( 32 ), "Idle", "Death", SubResource( 33 ) ]
 start_node = "Idle"
 end_node = "Death"
 graph_offset = Vector2( -12, -20.8743 )
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=36]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=35]
 
-[sub_resource type="SpriteFrames" id=37]
+[sub_resource type="SpriteFrames" id=36]
 animations = [ {
 "frames": [  ],
 "loop": true,
 "name": "default",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 25 ), ExtResource( 26 ), ExtResource( 32 ), ExtResource( 30 ), ExtResource( 29 ), ExtResource( 27 ), ExtResource( 31 ), ExtResource( 28 ) ],
+"frames": [ ExtResource( 23 ), ExtResource( 24 ) ],
 "loop": false,
-"name": "Death",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 18 ), ExtResource( 8 ) ],
-"loop": true,
-"name": "Run Start",
+"name": "Stop",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 3 ), ExtResource( 11 ), ExtResource( 21 ), ExtResource( 20 ), ExtResource( 10 ), ExtResource( 6 ), ExtResource( 5 ), ExtResource( 4 ), ExtResource( 12 ) ],
@@ -412,9 +419,24 @@ animations = [ {
 "name": "Run",
 "speed": 8.0
 }, {
+"frames": [ ExtResource( 18 ), ExtResource( 8 ) ],
+"loop": true,
+"name": "Run Start",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 25 ), ExtResource( 26 ), ExtResource( 32 ), ExtResource( 30 ), ExtResource( 29 ), ExtResource( 27 ), ExtResource( 31 ), ExtResource( 28 ) ],
+"loop": false,
+"name": "Death",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 19 ), ExtResource( 22 ), ExtResource( 17 ), ExtResource( 13 ) ],
 "loop": true,
 "name": "Idle",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 7 ), ExtResource( 2 ), ExtResource( 16 ), ExtResource( 66 ) ],
+"loop": true,
+"name": "Fall",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 14 ), ExtResource( 15 ) ],
@@ -425,16 +447,6 @@ animations = [ {
 "frames": [ ExtResource( 63 ), ExtResource( 64 ), ExtResource( 62 ), ExtResource( 65 ), ExtResource( 59 ), ExtResource( 60 ), ExtResource( 61 ), ExtResource( 61 ) ],
 "loop": false,
 "name": "Attack",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 7 ), ExtResource( 2 ), ExtResource( 16 ), ExtResource( 66 ) ],
-"loop": true,
-"name": "Fall",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 23 ), ExtResource( 24 ) ],
-"loop": false,
-"name": "Stop",
 "speed": 5.0
 } ]
 
@@ -454,7 +466,7 @@ position = Vector2( 231.628, 129.615 )
 scale = Vector2( 1.97632, 1.97632 )
 frames = SubResource( 1 )
 animation = "storm"
-frame = 4
+frame = 1
 playing = true
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
@@ -464,7 +476,7 @@ motion_mirroring = Vector2( 640, 640 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="ParallaxBackground/ParallaxLayer"]
 frames = SubResource( 2 )
 animation = "rain"
-frame = 3
+frame = 1
 playing = true
 centered = false
 
@@ -556,7 +568,6 @@ __meta__ = {
 
 [node name="Player Audio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 79 )
-pitch_scale = 1.39858
 
 [node name="wallJump Collider R" type="Area2D" parent="."]
 collision_layer = 2
@@ -564,18 +575,18 @@ collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="wallJump Collider R"]
 position = Vector2( 12.2794, 0.179489 )
-shape = SubResource( 5 )
+shape = SubResource( 4 )
 
 [node name="wallJump Collider L" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="wallJump Collider L"]
 position = Vector2( -13.3235, 0.450819 )
-shape = SubResource( 6 )
+shape = SubResource( 5 )
 
 [node name="Death Hitbox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Death Hitbox"]
-shape = SubResource( 7 )
+shape = SubResource( 6 )
 
 [node name="Lock Timer" type="Timer" parent="."]
 
@@ -592,6 +603,7 @@ hframes = 4
 visible = false
 texture = ExtResource( 76 )
 hframes = 2
+frame = 1
 
 [node name="Run" type="Sprite" parent="AnimationSprites"]
 visible = false
@@ -634,20 +646,20 @@ hframes = 9
 frame = 8
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/Airborne = SubResource( 8 )
-anims/Death = SubResource( 9 )
-anims/Hit = SubResource( 10 )
-anims/Idle = SubResource( 11 )
-anims/Jump = SubResource( 12 )
-anims/Land = SubResource( 13 )
-anims/Run = SubResource( 14 )
-anims/RunStart = SubResource( 15 )
-anims/RunStop = SubResource( 16 )
+anims/Airborne = SubResource( 7 )
+anims/Death = SubResource( 8 )
+anims/Hit = SubResource( 9 )
+anims/Idle = SubResource( 10 )
+anims/Jump = SubResource( 11 )
+anims/Land = SubResource( 12 )
+anims/Run = SubResource( 13 )
+anims/RunStart = SubResource( 14 )
+anims/RunStop = SubResource( 15 )
 
 [node name="(disabled)AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource( 35 )
+tree_root = SubResource( 34 )
 anim_player = NodePath("../AnimationPlayer")
-parameters/playback = SubResource( 36 )
+parameters/playback = SubResource( 35 )
 parameters/conditions/Death = false
 parameters/conditions/Hit = false
 parameters/conditions/Idle = false
@@ -658,7 +670,7 @@ parameters/conditions/Run = false
 [node name="LegacyAnimation" type="AnimatedSprite" parent="."]
 visible = false
 position = Vector2( 2.38329, 0 )
-frames = SubResource( 37 )
+frames = SubResource( 36 )
 animation = "Attack"
 [connection signal="body_entered" from="wallJump Collider R" to="." method="_on_wallJump_Collider_R_body_entered"]
 [connection signal="body_entered" from="wallJump Collider L" to="." method="_on_wallJump_Collider_L_body_entered"]

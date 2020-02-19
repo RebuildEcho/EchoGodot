@@ -148,7 +148,7 @@ func _process(delta):
 					$AnimationSprites.scale.x = 1
 					if !animFlag:
 						animFlag = true
-						print_debug(animFlag)
+						#print_debug(animFlag)
 						currAnim = "RunStart"
 					else:
 						currAnim = "Run"
@@ -162,17 +162,25 @@ func _process(delta):
 						currAnim = "Run"		
 					
 				if velocity == Vector2(0,0):
-					currAnim = "Idle"
+					print_debug(currAnim)
+					if currAnim == "Run":
+						currAnim = "RunStop"#not working
+						
+					if currAnim == "Airborne":
+						currAnim = "Land"#works somehow, dont know why
+						
+					else:
+						currAnim = "Idle"
 					animFlag = false
 					
 				if interact:
 					currAnim = "Hit"
-				if jump:
+				if velocity.y > 0:#not working
 					currAnim = "Jump"
 		else:
 			currAnim = "Airborne"
-			if prevAnim == "Airborne" && is_on_floor():
-				currAnim = "Land"
+			#if currAnim == "Airborne" && is_on_floor():
+			#	currAnim = "Land"
 	else:
 		inLocked = true
 		currAnim = "Death"
