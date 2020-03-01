@@ -4,11 +4,11 @@ This is a side-scroller puzzle game called "Rebuild Echo". It's original concept
 ![logo](https://user-images.githubusercontent.com/25724155/75621011-77248b00-5ba0-11ea-8780-da3073af7121.png)
 
 ## Dev Team
-Alper Sarı: Lead Programmer
-Doğa Oruç: Music Guy & Gameplay Programmer
-Fazilet Simge Er: Sound and UI Programmer
-Kaan Ünlü: Artist & Gameplay Programmer & Level Designer
-Özgür Yunus Taşdemir: Artist
+ * Alper Sarı: Lead Programmer
+ * Doğa Oruç: Music Guy & Gameplay Programmer
+ * Fazilet Simge Er: Sound and UI Programmer
+ * Kaan Ünlü: Artist & Gameplay Programmer & Level Designer
+ * Özgür Yunus Taşdemir: Artist
 
 ## Screenshots of the implementation so far:
 ![ss1](https://user-images.githubusercontent.com/25724155/75620982-0e3d1300-5ba0-11ea-9e0f-297d4257a3dc.png)
