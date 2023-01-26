@@ -1,6 +1,6 @@
 # EchoGodot
 This is a side-scroller puzzle game called "Rebuild Echo". It's original concept was written in GGJ 2020.
-
+It is playable on Itch.io: https://arkzenir.itch.io/rebuildecho
 ![logo](https://user-images.githubusercontent.com/25724155/75621011-77248b00-5ba0-11ea-8780-da3073af7121.png)
 
 ## Dev Team
